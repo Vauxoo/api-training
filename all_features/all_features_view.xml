@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="all_test_form">
+      <field name="name">all.test.form</field>
+      <field name="model">all.test</field>
+      <field name="arch" type="xml">
+          <form version="7.0">
+              <group>
+                  <field name="name"/>
+                  <field name="date"/>
+                  <field name="user_id"/>
+              </group>
+          </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="all_test_tree">
+      <field name="name">all.test.tree</field>
+      <field name="model">all.test</field>
+      <field name="arch" type="xml">
+          <tree string="List of Tests">
+              <field name="name"/>
+              <field name="date"/>
+              <field name="user_id"/>
+          </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="all_test_search">
+      <field name="name">all.test.search</field>
+      <field name="model">all.test</field>
+      <field name="arch" type="xml">
+          <search>
+              <field name="name"/>
+              <field name="date"/>
+              <field name="user_id"/>
+          </search>
+      </field>
+    </record>
+    <!-- Actions Materials -->
+    <record model="ir.actions.act_window" id="action_test">
+      <field name="name">All Tests Datatype </field>
+      <field name="res_model">all.test</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="all_test_search"/>
+    </record>
+
+    <!-- Menus -->
+    <menuitem name="All Tests" id="menu_action_base_my_test" />
+    <menuitem name="All Tests" parent="menu_action_base_my_test" id="menu_action_all_test_parent"/>
+    <menuitem name="All Tests" parent="menu_action_all_test_parent" id="menu_action_test_tree" action="action_test"/>
+  </data>
+</openerp>

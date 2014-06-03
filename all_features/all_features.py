@@ -18,57 +18,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from datetime import timedelta
 
+import pytz
 
-{
-    'name': 'How a training must be given',
-    'version': '0.1',
-    'category': 'Test',
-    'summary': 'Just for learning purpose avery commit has a concept to show',
-    'description': """
-Module to validate v8 new api features
-======================================
+from openerp import Model, fields, api, _
+from openerp.exceptions import Warning
 
-A models with all type of fields.
-
-- Char
-- Text
-- Date
-- Datetime
-- Selection
-- html
-- one2many
-- many2one
-- Related
-- Property
-- Function Recordable simple result.
-- Funtion Recordable multiple result.
-
-All orm methods
-
-- read
-- write
-- create
-- search
-- default
-- contrains
-- with_context
-""",
-    'author': 'OpenERP SA',
-    'depends': [
-        'base_setup',
-        'board',
-        'email_template', 
-        ],
-    'data': [
-        'all_features_view.xml',
-    ],
-    'demo': [
-        'all_test_demo.xml',
-    ],
-    'test': [
-    ],
-    'installable': True,
-    'auto_install': False,
-}
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+class AllTest(Model):
+    _name = "all.test" 
+    name = fields.Char("Name of the Recordset", required=True)
+    date = fields.Date("Date Recordset", required=True)
+    user_id = fields.Many2one('res.users', string='Responsible User',
+        default=lambda self: self.env.user,
+        readonly=False, states={'done': [('readonly', True)]})
