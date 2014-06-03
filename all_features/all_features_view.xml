@@ -8,6 +8,10 @@
           <form version="7.0">
               <group>
                   <field name="name"/>
+                  <field name="tags" widget="many2many_tags"/>
+                  <field name="active"/>
+                  <field name="int_test"/>
+                  <field name="sequence"/>
                   <field name="date"/>
                   <field name="user_id"/>
                   <field name="date_time"/>
@@ -22,6 +26,7 @@
       <field name="model">all.test</field>
       <field name="arch" type="xml">
           <tree string="List of Tests">
+              <field name="sequence"/>
               <field name="name"/>
               <field name="date"/>
               <field name="user_id"/>

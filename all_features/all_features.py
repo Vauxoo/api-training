@@ -31,10 +31,17 @@ class ResPartner(Model):
         readonly=False,
         help="Test Field")
 
+class TestTags(Model):
+    _name = 'all.test.tags'
+    name = fields.Char('Name of Tag')
+
 class AllTest(Model):
     _name = "all.test" 
+    active = fields.Boolean("Active Testing", default=True, help="Activate or Deactivate a record")
     name = fields.Char("Name of the Recordset", required=True)
     date = fields.Date("Date Recordset", required=True, help="Date")
+    int_test = fields.Integer("Integr Field", help="Integer Test")
+    sequence = fields.Integer("Sequence Field", help="Integer Test")
     date_time = fields.Datetime("Date Recordset", required=True, help="Date")
     user_id = fields.Many2one('res.users', string='Responsible User',
         default=lambda self: self.env.user,
@@ -43,3 +50,5 @@ class AllTest(Model):
     signature = fields.Text('Signature', related='user_id.signature',
         store=True, readonly=False)
     partner_ids = fields.One2many('res.partner', 'test_id', string='Partners')
+    tags = fields.Many2many('all.test.tags', help="SOme tags")
+
