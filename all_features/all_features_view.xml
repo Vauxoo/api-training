@@ -10,6 +10,9 @@
                   <field name="name"/>
                   <field name="date"/>
                   <field name="user_id"/>
+                  <field name="date_time"/>
+                  <field name="signature"/>
+                  <field name="partner_ids"/>
               </group>
           </form>
       </field>
@@ -22,6 +25,7 @@
               <field name="name"/>
               <field name="date"/>
               <field name="user_id"/>
+              <field name="date_time"/>
           </tree>
       </field>
     </record>
@@ -33,6 +37,7 @@
               <field name="name"/>
               <field name="date"/>
               <field name="user_id"/>
+              <field name="date_time"/>
           </search>
       </field>
     </record>

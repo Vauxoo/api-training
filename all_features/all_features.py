@@ -25,10 +25,21 @@ import pytz
 from openerp import Model, fields, api, _
 from openerp.exceptions import Warning
 
+class ResPartner(Model):
+    _inherit = 'res.partner'
+    test_id = fields.Many2one('all.test', string='Test Model',
+        readonly=False,
+        help="Test Field")
+
 class AllTest(Model):
     _name = "all.test" 
     name = fields.Char("Name of the Recordset", required=True)
-    date = fields.Date("Date Recordset", required=True)
+    date = fields.Date("Date Recordset", required=True, help="Date")
+    date_time = fields.Datetime("Date Recordset", required=True, help="Date")
     user_id = fields.Many2one('res.users', string='Responsible User',
         default=lambda self: self.env.user,
-        readonly=False, states={'done': [('readonly', True)]})
+        readonly=False,
+        help="MAny2One Field")
+    signature = fields.Text('Signature', related='user_id.signature',
+        store=True, readonly=False)
+    partner_ids = fields.One2many('res.partner', 'test_id', string='Partners')
