@@ -56,4 +56,12 @@ class AllTest(Model):
     def copy(self, default):
         """ Reset the state and the registrations while copying an event """
         default['name'] =  self.name+'Guarever'
+        self.testing_method_newapi()
         return super(AllTest, self).copy(default)
+
+    @api.one
+    def testing_method_newapi(self):
+        """ Testing a method called from a button"""
+        print self
+        print self.name
+        return True 

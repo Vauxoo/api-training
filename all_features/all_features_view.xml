@@ -6,6 +6,10 @@
       <field name="model">all.test</field>
       <field name="arch" type="xml">
           <form version="7.0">
+              <header>
+                  <button name="testing_method_newapi" string="New Api" type="object"/>
+              </header>
+              <sheet>
               <group>
                   <field name="name"/>
                   <field name="tags" widget="many2many_tags"/>
@@ -18,6 +22,7 @@
                   <field name="signature"/>
                   <field name="partner_ids"/>
               </group>
+              </sheet>
           </form>
       </field>
     </record>
