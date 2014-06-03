@@ -52,3 +52,8 @@ class AllTest(Model):
     partner_ids = fields.One2many('res.partner', 'test_id', string='Partners')
     tags = fields.Many2many('all.test.tags', help="SOme tags")
 
+    @api.one
+    def copy(self, default):
+        """ Reset the state and the registrations while copying an event """
+        default['name'] =  self.name+'Guarever'
+        return super(AllTest, self).copy(default)
